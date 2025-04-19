@@ -1,5 +1,7 @@
+import { Dashboard } from "./components/dashboard";
+
 function App() {
-  return <div>App started</div>;
+  return <Dashboard></Dashboard>;
 }
 
 export { App };
