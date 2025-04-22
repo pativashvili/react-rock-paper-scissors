@@ -1,3 +1,6 @@
+// სტრული თავისუფკლება გაქვს ფოლდერ/ფაილ სტრუქტურაზე რეაქტში
+// ასეთი სტატიკურტრი კონფიგურაციისთვის /src/lib/config/*.ts ვიყენებთ უფრო კიტხვადია ფოლდერ სტრუქტურა
+
 import { GameOptionsType } from "../types/game-options.type";
 import { OptionsEnum } from "../types/options.enum";
 

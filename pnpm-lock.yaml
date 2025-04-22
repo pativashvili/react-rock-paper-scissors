@@ -34,7 +34,7 @@ importers:
         specifier: ^10.1.1
         version: 10.1.1(eslint@9.24.0)
       eslint-plugin-prettier:
-        specifier: ^5.2.6
+        specifier: ^5.2.5
         version: 5.2.6(eslint-config-prettier@10.1.1(eslint@9.24.0))(eslint@9.24.0)(prettier@3.5.3)
       eslint-plugin-react-hooks:
         specifier: ^5.2.0

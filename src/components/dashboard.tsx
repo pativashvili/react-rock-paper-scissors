@@ -6,6 +6,9 @@ import { OptionsEnum } from "../types/options.enum";
 import { WinnerBoard } from "./winner-board";
 
 function Dashboard() {
+  // ქასტომ ჰუკისთვის იდელაუირ ადგილია,
+  // თამაშის ლოგიკას ერთ სტეიტში აღწერ და დააბრუნებ ჰუიდან საჭირო სტეიიტს და მეთოდებ
+  // მაგ const {}  = useGameLogic();
   const [userScore, setUserScore] = useState<number>(0);
   const [computerScore, setComputerScore] = useState<number>(0);
   const [clicksCounter, setClicksCounter] = useState<number>(0);
@@ -16,6 +19,11 @@ function Dashboard() {
   const [winner, setWinner] = useState<string>();
 
   useEffect(() => {
+    // ასეთი ჩანაწერი რთულად კითხვადია,
+    // ტერნერი ოპერატორი მხოლოდ მარტივი ერტ დონიანი იფ ელსესთვის გამოვიყენოთ
+    // წესიტ esint ვორნინგ გექნება
+    // Expected an assignment or function call and instead saw an expression
+    // კლასიკური if else სტრუქტურა გამოვიყენოთ, უფრო კითხვადი და გასაგებია
     if (userSelect !== computerSelect) {
       if (userSelect === OptionsEnum.Paper) {
         computerSelect === OptionsEnum.Scissors
@@ -36,6 +44,7 @@ function Dashboard() {
   }, [userSelect, computerSelect, clicksCounter]);
 
   useEffect(() => {
+    // აქაც კლასიკური if else სტრუქტურა გამოვიყენოთ
     if (userScore >= 3 || computerScore >= 3) {
       computerScore > userScore ? setWinner("Computer") : setWinner("You");
     }
@@ -54,11 +63,12 @@ function Dashboard() {
             setComputerScore(0);
             setWinner("");
           }}
+          // როცა შვილს არ ვაწვდით შეგვილია <WinnerBoard /> self closing tag გამოვიყენოთ
         ></WinnerBoard>
       ) : (
         <Fragment>
           <div className="game-options-wrapper">
-            {GAME_OPTIONS.map((eachOption) => (
+            {GAME_OPTIONS.map((eachOption, _i, self) => (
               <GameOption
                 key={eachOption?.id}
                 gameOption={eachOption}
@@ -67,9 +77,11 @@ function Dashboard() {
                   setClicksCounter((prev) => (prev += 1));
                   setUserSelect(selectedOption);
                   setComputerSelect(
-                    GAME_OPTIONS.find((el) => el.id == randomIndex)?.name,
+                    // map ის მესამე პარამეტრიდან შეგიძია აიღო
+                    self.find((el) => el.id == randomIndex)?.name,
                   );
                 }}
+                // აქაც self closing tag გამოვიყენოთ
               ></GameOption>
             ))}
           </div>
